@@ -2,7 +2,7 @@ from agent import DDPGAgent
 import numpy as np
 
 
-class MA:
+class MultiAgent:
     def __init__(self, config):
         self.config = config
         
