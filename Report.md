@@ -34,3 +34,4 @@ Here's a list of optimizations that can be applied to the project:
 2. Prioritization for replay buffer
 3. Paramter space noise for better exploration
 4. Test shared network between agents
+5. Test separate replay buffer for agents
