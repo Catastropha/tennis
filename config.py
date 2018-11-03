@@ -16,14 +16,14 @@ class Config:
         self.actor_hidden_units = (64, 64)
         self.actor_network_fn = None
         self.actor_optimizer_fn = None
-        self.actor_learning_rate = 0.004
+        self.actor_learning_rate = 1e-4
 
         self.critic_hidden_units = (64, 64)
         self.critic_network_fn = None
         self.critic_optimizer_fn = None
-        self.critic_learning_rate = 0.003
+        self.critic_learning_rate = 3e-4
         
-        self.tau = 1e3
+        self.tau = 1e-3
         self.weight_decay = 0
         self.states = None
         self.state_size = None

@@ -52,7 +52,7 @@ class Actor(nn.Module):
 class Critic(nn.Module):
     """Critic (Value) Model."""
 
-    def __init__(self, action_size, state_size, hidden_units, seed, gate=F.relu):
+    def __init__(self, action_size, state_size, hidden_units, seed, gate=F.relu, dropout=0.2):
         """Initialize parameters and build model.
         Params
         ======
@@ -65,6 +65,7 @@ class Critic(nn.Module):
         super(Critic, self).__init__()
         self.seed = torch.manual_seed(seed)
         self.gate = gate
+        self.dropout = nn.Dropout(p=dropout)
         self.normalizer = nn.BatchNorm1d(state_size)
         dims = (state_size, ) + hidden_units
         self.layers = nn.ModuleList()
@@ -90,4 +91,5 @@ class Critic(nn.Module):
         x = torch.cat((xs, actions), dim=1)
         for i in range(1, len(self.layers)):
             x = self.gate(self.layers[i](x))
+        x = self.dropout(x)
         return self.output(x)
